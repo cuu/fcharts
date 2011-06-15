@@ -1,0 +1,27 @@
+2011 06 15 
+I started to constructor the mysql 
+CREATE DATABASE  `golden` DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;
+
+CREATE TABLE  `golden`.`admin` (
+`username` VARCHAR( 256 ) CHARACTER SET gbk COLLATE gbk_chinese_ci NOT NULL ,
+`password` VARCHAR( 256 ) CHARACTER SET gbk COLLATE gbk_chinese_ci NOT NULL ,
+`type` INT( 3 ) UNSIGNED NOT NULL DEFAULT  '0',
+`jzrq` VARCHAR( 10 ) NOT NULL DEFAULT  '0',
+`zt` SMALLINT( 1 ) UNSIGNED NOT NULL DEFAULT  '1'
+) ENGINE = MYISAM CHARACTER SET gbk COLLATE gbk_chinese_ci COMMENT =  'ALL the managers ,include proxy, normal ,super root'
+
+CREATE TABLE  `golden`.`money` (
+`name` VARCHAR( 256 ) CHARACTER SET gbk COLLATE gbk_chinese_ci NOT NULL COMMENT  '关联的名子',
+`time` VARCHAR( 10 ) NOT NULL DEFAULT  'NOW()' COMMENT  '时间',
+`money` INT( 10 ) NOT NULL DEFAULT  '0' COMMENT  '钱数',
+PRIMARY KEY (  `name` ) ,
+UNIQUE (
+`time`
+),
+FULLTEXT (
+`name`
+)
+) ENGINE = MYISAM CHARACTER SET gbk COLLATE gbk_chinese_ci
+
+ALTER TABLE  `admin` CHANGE  `password`  `passwd` VARCHAR( 256 ) CHARACTER SET gbk COLLATE gbk_chinese_ci NOT NULL
+

@@ -1,0 +1,203 @@
+/* CSS */
+body{
+	margin:0px;
+	/*border-top:px solid #bbccff;*/
+	font-family:"ºÚÌå","Î¢ÈíÑÅºÚ",Arial,Helvetica, sans-serif;
+	height:100%;
+
+}
+form{margin:0px;}
+table{
+    font-family:"ºÚÌå",Arial, Helvetica, sans-serif,"ËÎÌå";
+	font-size:12px;
+	color:#333333
+}
+.page
+{
+	font-size:14px;
+	font-weight:bold;
+	TEXT-DECORATION: none;
+}
+td a{
+TEXT-DECORATION: none;
+}
+a.page
+{
+TEXT-DECORATION: none;
+}
+.biaoti
+{
+	padding-top:5px;color:#0000cc; font-size:11pt; font-weight:900; text-align:center
+}
+
+.biaoti_guu
+{
+	
+	padding-top:5px;color:#000; font-size:11pt; font-weight:900; text-align:center
+}
+textarea{
+	border:solid 1px #0080B0;
+	SCROLLBAR-FACE-COLOR: #0080B0; 
+	SCROLLBAR-HIGHLIGHT-COLOR: #0080B0; 
+	SCROLLBAR-SHADOW-COLOR: #999999; 
+	SCROLLBAR-3DLIGHT-COLOR: #999999; 
+	SCROLLBAR-ARROW-COLOR: #ffffff; 
+	SCROLLBAR-TRACK-COLOR: #e3e3e3; 
+	SCROLLBAR-DARKSHADOW-COLOR: #ffffff; 
+	SCROLLBAR-BASE-COLOR: #999999;
+}
+
+.buttonStyle{
+	BORDER: #0080B0 1px solid; 
+	PADDING-RIGHT: 0px; 
+	PADDING-LEFT: 0px; 
+	FONT-SIZE: 12px; 
+	FILTER:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#ffffff, EndColorStr=#cecfde); 
+	CURSOR: hand;
+	COLOR: black;
+	padding-top:2px
+}
+
+.logininput{
+	border:solid 1px #0080B0;
+	color:#000000;
+	background-color:#FFFFFF;
+	height:22px;
+	padding-top:3px
+}
+
+A.del{
+	font-size:10pt;
+}
+A.del:link {
+	COLOR: #ff0000;
+	TEXT-DECORATION: none;
+}
+A.del:visited {
+	COLOR: #ff0000;
+	TEXT-DECORATION: none;
+}
+A.del:active {
+	COLOR: #0000FF;
+	TEXT-DECORATION: underline;
+}
+A.del:hover {
+	COLOR: #0000FF;
+	TEXT-DECORATION: underline;
+	/*position: relative;*/
+	/*right: -1px;*/
+	/*bottom: -1px;*/
+}
+
+
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	color: #FF0000;
+	text-decoration: none;
+/*
+	right: -1px;
+	bottom: -1px;
+	position: relative;
+*/
+}
+
+
+
+.blackfont {
+	font-family: "ºÚÌå", "Arial Black", sans-serif;
+	font-size: 18px;
+	font-weight:100;
+	line-height: 22px;
+}
+
+.jingpinqu_jieshao {
+	color: #999999;
+}
+
+/***ºì×Ö***/
+.fontred{color:#FF0000;}
+
+.class_bian {
+	border: 1px solid #888888;
+}
+
+.radio{
+	width:20px;
+	height:20px;
+	border:#0080B0 1px solid;
+	FILTER:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#ffffff, EndColorStr=#cecfde);
+	cursor:hand;
+}
+
+.tdbiaoti{
+    color:#Ff6600;
+	font-weight:800;
+	text-align:center;
+}
+
+A.link{
+	font-size:9pt
+}
+A.link:link {
+	COLOR:#0000FF; TEXT-DECORATION: none
+}
+A.link:visited {
+	COLOR: #0000FF; TEXT-DECORATION: none
+}
+A.link:active {
+	COLOR: #ff3300; TEXT-DECORATION: underline
+}
+A.link:hover {
+	COLOR: #ff3300; TEXT-DECORATION: underline
+}
+
+A.tdbiaoti{
+	color:#Ff6600;
+	font-weight:800;
+	text-align:center;
+}
+A.tdbiaoti:link {
+	color:#Ff6600;
+	font-weight:800;
+	text-align:center;
+	TEXT-DECORATION: none
+}
+A.tdbiaoti:visited {
+	color:#Ff6600;
+	font-weight:800;
+	text-align:center;
+	TEXT-DECORATION: none
+}
+A.tdbiaoti:active {
+	color:#ff3300;
+	font-weight:800;
+	text-align:center;
+	TEXT-DECORATION: underline
+}
+A.tdbiaoti:hover {
+	color:#ff3300;
+	font-weight:800;
+	text-align:center;
+	TEXT-DECORATION: underline
+}
+#g_input 
+{
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	border-right:1px solid #999;
+	border-bottom:1px solid #999;
+}
+.g_input 
+{
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	border-right:1px solid #999;
+	border-bottom:1px solid #999;
+}

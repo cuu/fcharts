@@ -1,0 +1,116 @@
+/* CSS Document */
+BODY
+{
+	/*BACKGROUND: #fff; */
+	MARGIN: 0px;
+	FONT: 12px 宋体;
+	/*border-right:3px solid #bbccff;*/
+}
+TABLE
+{
+	BORDER-RIGHT: 0px;
+	BORDER-TOP: 0px;
+	BORDER-LEFT: 0px;
+	BORDER-BOTTOM: 0px
+}
+TD
+{
+	FONT: 12px 宋体;
+}
+A
+{
+	FONT: 12px 宋体;
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+.kjk:link
+{
+    font-size: 10px;
+}
+A:hover
+{
+	COLOR: #C08D38;
+	TEXT-DECORATION: underline
+}
+.sec_menu
+{
+	
+	OVERFLOW: hidden;
+	
+}
+.sec_menu td
+{
+	font-size:14px;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+#l_menu td
+{
+	padding-top:3px;
+	padding-bottom:3px;
+
+}
+#l_menu a 
+{
+	font-size:14px;
+}
+.menu_title
+{
+	cursor: hand;	
+}
+.menu_title SPAN
+{
+	FONT-WEIGHT: bold;
+	LEFT: 8px;
+	COLOR: #7B5A24;
+	POSITION: relative;
+	TOP: 2px
+}
+.menu_title2
+{
+	cursor: hand;	
+}
+.menu_title2 SPAN
+{
+	FONT-WEIGHT: bold;
+	LEFT: 8px;
+	COLOR: #A37830;
+	POSITION: relative;
+	TOP: 2px
+}
+.style1
+{
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 13px;
+	font-family: "宋体";
+}
+frame
+{
+	
+	border:none;
+}
+
+#main_menubar_left
+{
+	font-family:"微软雅黑","宋体","黑体";
+	font-size:15px;
+}
+#main_menubar_left a{
+	font-family: arial,sans-serif;
+	font-size:14px;
+	color:#0000cc;
+}
+#main_menubar_left span
+{
+	margin-left:10px;
+}
+#main_menubar_right a{
+	font-family: arial,sans-serif;
+	font-size:14px;
+	color:#0000cc;
+}
+#main_menubar_right span
+{
+	margin-left:10px;
+}
