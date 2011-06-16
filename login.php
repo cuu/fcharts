@@ -42,7 +42,7 @@ function  GetCode()
 	</td>
 	<td>
 	密码:
-	<input class="logininput" name="adminpsw" type="password" size="20" value="" /> <br />
+	<input class="logininput" name="adminpsw" type="password" size="20" value="004587" /> <br />
 	</td></tr>
 	</table>
 	<table cellspacing="4">
