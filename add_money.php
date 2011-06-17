@@ -100,12 +100,55 @@ $(function() {
   $("#btg_confirm_add").click( 
 	function()
 	{
+		if(  $.trim( $("#add_name").val()) == "")
+		{
+			$("#check_progress").html("请输入代理商");
+			$("#add_name").vibrate();
+			$('#check_progress').fadeIn().delay(5000).fadeOut('slow'); 
+			return false;
+		}
 		if(  $.trim( $("#add_money").val()) == "")
 		{
-			$("#money_count").html( "请输入钞票数目");
+			
+			$("#check_progress").html( "请输入钞票数目");
 			$("#add_money").vibrate();
+			$('#check_progress').fadeIn().delay(5000).fadeOut('slow'); 
 			return false;
-		} 
+		}
+	    $("#check_progress").html("正在检查是否已存在该代理商...");
+
+            			$.ajax({
+                                        
+                                        url: 'check.php?action=pcheck&pname='+jQuery.trim($("#add_name").val()),
+                                        success: function(data) 
+                                        {
+                                                //alert(data);
+                                                //$('.result').html(data);
+                                                if(data ==0)
+                                                {
+                                                        $("#check_progress").html("此代理商不存在!");
+							$('#check_progress').fadeIn().delay(5000).fadeOut('slow'); 
+                                                        return false;
+                                                }else if(data ==1)
+                                                {
+                                                        $("#check_progress").html("");  
+                                                        
+                                                        $("#target_group").submit(); 
+                                                }
+                                                
+                                        },
+                                        error: function(xhr, ajaxOptions, thrownError)
+                                        {
+                                                   // alert(xhr.statusText);
+                                                   // alert(thrownError);
+                                                $("#check_progress").text(xhr.statusText);
+                                                return false;
+                                        }
+                                });
+	   return false;
+
+
+ 
 	}
     );
 
@@ -126,7 +169,7 @@ body{   background:url("images/dang.jpg") no-repeat bottom right;}
 </head>
 
 <body  topmargin="0">
-	<form action="add_money_db.php" method="POST" >
+	<form action="add_money_db.php" method="POST" id="target_group">
 		<div align="center"><p>　</p><p>　</p>
 		<input name="add_money" type="hidden" value="add" >
 		<table id="container" border="0" width="368" cellspacing="4" cellpadding="1"  style="border: 1px solid #ccc;border-right:1px solid #999;border-bottom:1px solid #999;  padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
@@ -139,7 +182,7 @@ body{   background:url("images/dang.jpg") no-repeat bottom right;}
 					<font size="2">帐号名称：
 					</font></td>
 				<td style="border-left-width: 1px; border-right-width: 1px;" width="286" align="left">
-					<input class="g_input"  style="font-size:15px;"  type="text" name="add_username" size="20" value="<?php echo $_SESSION["yhgl"]; ?>"  <?php if( intval($_SESSION["zz"]) != 1) { echo 'readonly="readonly"'; }  ?> >
+					<input class="g_input"  style="font-size:15px;"  type="text" id="add_name" name="add_username" size="20" value="<?php echo $_SESSION["yhgl"]; ?>"  <?php if( intval($_SESSION["zz"]) != 1) { echo 'readonly="readonly"'; }  ?> >
 				</td>
 			</tr>
 			<tr>
@@ -163,6 +206,7 @@ body{   background:url("images/dang.jpg") no-repeat bottom right;}
 				<td  style="margin-top:9px;"> <input id="btg_confirm_add" type="submit" style=""  value="确定记录" name="2B"> </td>
 			</tr>
 		</table>
+		<label id="check_progress" style="background:red;color:white;" ></label>
 		</div>
 	</form>
 </body>

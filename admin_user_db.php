@@ -165,7 +165,7 @@ if(strcmp($add_new_user,"add") == 0)
 	      {
 		//echo "result1 !== false";
 		closeConn($handle);
-		echo "<script language=javascript>alert('管理员帐号添加成功;请记住您的新帐号信息!');window.location.href='admin_user2.php'</script>";
+		echo "<script language=javascript>alert('管理员帐号添加成功;请记住您的新帐号信息!');</script>";
 		die();
 	      }
 	    else
@@ -247,7 +247,7 @@ else
 			else
 			{
 				closeConn($handle);
-				echo "<script language=javascript>alert('管理员帐号设置成功;请记住您的新帐号信息!');window.location.href='admin_user.php'</script>";
+				echo "<script language=javascript>alert('管理员帐号设置成功;请记住您的新帐号信息!');</script>";
 				die();
 			}	
 

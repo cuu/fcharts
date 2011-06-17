@@ -26,7 +26,8 @@ function return_account_type($v)
 <script language="javascript" >
 
 $(function(){
- 
+
+
 $("#main_menubar_left  a ").click(
     function(){
       $("#main_menubar_left  a ").each(

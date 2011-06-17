@@ -25,3 +25,4 @@ FULLTEXT (
 
 ALTER TABLE  `admin` CHANGE  `password`  `passwd` VARCHAR( 256 ) CHARACTER SET gbk COLLATE gbk_chinese_ci NOT NULL
 
+在money表中 ,time是unique 的,这样做的理由是 可以自动更新当天的钱数,重复输入之后,自动更新当天的值,不产生更多的数据,精简,唯一又准确

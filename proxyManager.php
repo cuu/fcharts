@@ -53,7 +53,7 @@ if($action == "del") proxy_del();
 else
 {
 
-		$sql = "select * from money";
+		$sql = "select * from admin where  type = 2";
                 if( $pg!="")
                 {
                   $sql2 = $sql;
@@ -97,12 +97,12 @@ else
   </div>
 
 
-<table  id ="group_out_list" border="0" cellspacing="0"  cellpadding="1" bordercolorlight="#fff" bordercolordark="#fff" style="border-collapse: collapse;  table-layout:fixed;width:600px;WORD-BREAK: break-all;" bordercolor="#fff"  >
+<table  id ="proxy_out_list" border="0" cellspacing="0"  cellpadding="1" bordercolorlight="#fff" bordercolordark="#fff" style="border-collapse: collapse;  table-layout:fixed;width:600px;WORD-BREAK: break-all;margin:8px;border:1px solid #bbb; border-bottom:none;" bordercolor="#fff"  >
       <tr height='30' bgcolor='#000000'  >
        <td width="150" class="tdbiaoti">确认操作</td>
        <td width="240" height="30"  class="tdbiaoti">代理商编号</td>
        <td width="120" class="tdbiaoti">钞票数目</td>
-       <td width="120" class="tdbiaoti">更新时间</td>
+       <td width="120" class="tdbiaoti">最后更新时间</td>
     
        <td></td>
         </tr>
@@ -114,23 +114,55 @@ else
 ?>
                       <tr height='25' style="overflow:hidden;border-bottom:1px solid #ccc;">
                        <td align="center"  >
-                        <a class="del"  onClick="return confirm('删除该代理商,您确定进行删除操作吗？')"   href="proxyManager.php?action=del&id=<?php  echo   trim($row["id"]); ?>">删除</a> &nbsp;
-                         <a  class="edit" style="color:blue;"  id="edit_a"  href="edit_proxy.php?action=edit&id=<?php echo trim($row["id"]);?>" >修改</a>
+                        <a class="del"  onClick="return confirm('您确定进行删除操作吗？')"   href="proxyManager.php?action=del&id=<?php  echo   trim($row["id"]); ?>&name=<?php echo trim( $row["username"]); ?>">删除</a> &nbsp;
+			<!--
+                         <a  class="edit" style="color:blue;"  id="edit_a"  href="admin_proxy.php?action=edit&id=<?php echo trim($row["id"]);?>" >修改</a>
+			-->
                     &nbsp;&nbsp;
                        </td>
                        <td nowrap  style=" overflow:hidden;width:240px;height:25px;" align="center">
-			    <a href="show_charts.php?action=show&id=<?php echo trim($row["id"]); ?>" id="show_chart" ><?php echo $row["name"]; ?></a>
-                            <?php echo trim($row["groupname"]); ?>
+			    <a style="color:blue;font-size:12px;" href="show_charts.php?action=show&id=<?php echo trim($row["id"]); ?>" id="show_chart" ><?php echo $row["username"]; ?></a>
+                        
                        </td>
                       <td align="center">
                       <?php
-                              
-                                echo "money count";
+                       		$sql3 = "select money from money where name='{$row["username"]}'";
+				$result3 = mysql_query($sql3,$handle)  or die('Error in query $query.' .mysql_error());
+				 
+                		$num3 = mysql_num_rows($result3);
+                		if($num3 > 0)
+				{
+					for($i3=0; $i3<$num3; $i3++)
+					{
+						$row3 = mysql_fetch_array($result3,MYSQL_NUM);
+						$money_count3 += intval($row3[0]);
+					}
+                                	echo strval($money_count3)."￥";
+				}else
+				{
+					echo "0￥";
+				}
                       ?>
                       </td>
 
                        <td align="center">
-                            <?php echo trim( date("Y年n月j日",strtotime($row["time"])) ); ?>
+                      <?php
+                       		$sql4 = "select time from money where name='{$row["username"]}' order by time desc";
+				$result4 = mysql_query($sql4,$handle)  or die('Error in query $query.' .mysql_error());
+				 
+                		$num4 = mysql_num_rows($result4);
+                		if($num4 > 0)
+				{
+
+						$row4 = mysql_fetch_array($result4,MYSQL_NUM);
+						$last_time4 = $row4[0];
+
+                                	echo date("Y年m月d日",strtotime($last_time4));
+				}else
+				{
+					echo "没有更新";
+				}
+                      ?>                            
                        </td>
                        <td align="center"></td>
                       </tr>
@@ -169,3 +201,34 @@ bgcolor=#ebeff9>
 
 </body>
 </html>
+
+<?php
+
+function proxy_del()
+{
+        $id   = getFormValue("id"   );
+	$name = getFormValue("name" );
+ 
+        $sql = "delete from admin where id=".$id;
+	$sql2 = "delete from money where name='{$name}'";
+	
+        $handle = openConn();
+        if($handle == NULL) die( "mysql_error".mysql_error());
+        $result = mysql_query($sql,$handle);
+        if($result === false)
+        {
+                echo "Delete proxy db error ".mysql_error();
+                closeConn($handle);
+                die();
+        }else
+        {
+		$result = mysql_query($sql2,$handle);
+                echo show_inf("删除成功");
+                closeConn($handle);
+                die();
+        }
+        return;
+
+}
+
+?>

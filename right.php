@@ -1,6 +1,11 @@
-<?php 
-	echo "right ";
+<?php
+/*\
+|*|  dexterguu#yahoo.com
+|*|  Display some infos when root login in
+|*|  charts, total number
+\*/
 ?>
+
 
 <html>
 <head>

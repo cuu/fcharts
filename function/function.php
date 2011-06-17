@@ -187,7 +187,10 @@ function check_root()
   }
 }
 
-
+function show_inf($str)
+{
+	return "<span style='font-size:15px;' >&nbsp;".$str."</span>";
+}
 
 
 ?>

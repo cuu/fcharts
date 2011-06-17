@@ -69,7 +69,7 @@ body{	background:url("images/dang.jpg") no-repeat bottom right;}
 		    [delete]---[motify]----uname----  ---user type---  
 
 		   */
-		$sql = "select * from admin";
+		$sql = "select * from admin where type != 2";
 		$handle = openConn();
 		if($handle ==NULL) die( "mysql error". mysql_error() );
 		$result = mysql_query($sql,$handle);
@@ -100,7 +100,7 @@ body{	background:url("images/dang.jpg") no-repeat bottom right;}
 </div>
 
 <div>
-<a style="font-family:simhei;width:auto;height:auto;margin-left:10px;font-size:12px;color:blue;text-decoration:underline;" href="add_user.php" >添加管理员或代理商</a>
+<a style="font-family:simhei;width:auto;height:auto;margin-left:10px;font-size:12px;color:blue;text-decoration:underline;" href="add_user.php" >添加管理员</a>
 </div>
 
 
