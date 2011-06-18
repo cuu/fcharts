@@ -104,7 +104,7 @@ body{   background:url("images/dang.jpg") no-repeat bottom right;}
     <font size="2">´úÀíÉÌ±àºÅ£º
    </font></td>
     <td style="border-left-width: 1px; border-right-width: 1px;" width="286" align="left">
-    <input class="g_input"  style="font-size:13px;"  type="text" id="add_username" name="add_username" size="20" value="" >
+    <input MAXLENGTH=7  class="g_input"  style="font-size:13px;"  type="text" id="add_username" name="add_username" size="20" value="" >
    </td>
    </tr>
    <tr>

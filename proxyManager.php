@@ -7,7 +7,7 @@ proxyManager.php
 session_start();
 include_once "header.php";
 //include_once "waibu.php";
-//include_once "cscheck.php";
+include_once "cscheck.php";
 include_once "function/conn.php";
 include_once "function/function.php";
 include_once "function/xdownpage.php";
@@ -31,6 +31,7 @@ include_once "function/xdownpage.php";
 ?>
 
 <style type="text/css">
+body{   background:url("images/dang.jpg") no-repeat bottom right;}
 .checked_line
 {
         background:#ffcc99;
@@ -114,7 +115,18 @@ else
 ?>
                       <tr height='25' style="overflow:hidden;border-bottom:1px solid #ccc;">
                        <td align="center"  >
+<?php
+			if( intval($_SESSION["zz"]) ==1)
+			{
+?>
                         <a class="del"  onClick="return confirm('您确定进行删除操作吗？')"   href="proxyManager.php?action=del&id=<?php  echo   trim($row["id"]); ?>&name=<?php echo trim( $row["username"]); ?>">删除</a> &nbsp;
+<?php
+			}
+			else
+			{
+				echo "不可操作";
+			}
+?>
 			<!--
                          <a  class="edit" style="color:blue;"  id="edit_a"  href="admin_proxy.php?action=edit&id=<?php echo trim($row["id"]);?>" >修改</a>
 			-->

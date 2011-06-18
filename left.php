@@ -96,7 +96,7 @@ text-decoration:none;
 	    <?php   }
 	    ?>
 <?php 
-	if( intval( $_SESSION["zz"] ) == 1)
+	if( intval( $_SESSION["zz"] ) == 1 || intval( $_SESSION["zz"] ) == 3 )
 	{
 ?>
 		<a class="tab" id="menu_item1" href="proxyManager.php" target=mainFrame>代理商管理</a> 
