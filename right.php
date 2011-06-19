@@ -18,7 +18,7 @@ include_once "function/xdownpage.php";
 	$sql1 = "select count(id) from admin where type=1"; // 1 for root
 	$sql2 = "select count(id) from admin where type=2";// 2 for proxy
 	$sql3 = "select count(id) from admin where type=3"; //3 for normal root
-
+	$sql4 = "select name,time,money from money order by time desc LIMIT 10";
         $handle = openConn();
         if($handle == NULL) die( "mysql_error".mysql_error());
         $result = mysql_query($sql1,$handle)   or die('Error in query $query.' .mysql_error());
@@ -30,6 +30,18 @@ include_once "function/xdownpage.php";
         $result = mysql_query($sql3,$handle)   or die('Error in query $query.' .mysql_error());	
 	$row = mysql_fetch_array($result,MYSQL_NUM);
 	$NROOTS = $row[0];
+	
+	$result = mysql_query($sql4,$handle)   or die('Error in query $query.' .mysql_error());		
+	$num1 = mysql_num_rows($result);
+	if($num1 > 0)
+	{
+		$log_arr = array();
+		for($i= 0; $i < $num1; $i++)
+		{
+			$row = mysql_fetch_array($result,MYSQL_NUM);
+			$log_arr[$i] = $row;
+		}
+	}
 	closeConn($handle );
 
 ?>
@@ -73,5 +85,15 @@ body {
 		<div>  <span style="color:white;">总共有</span><?php echo $PROXYS; ?>位代理商</div>
 	</div>
 	<hr size=1 style="width:700px;margin-left:50px;" />
+	<div style="margin-left:50px;line-height:1.6em;">
+	<span style="color:gray;">The Last 10 records:</span> <br />
+	<?php
+		for($i=0;$i< count($log_arr); $i++)
+		{
+			echo $log_arr[$i][0]." 在".$log_arr[$i][1]."记录了".$log_arr[$i][2]."￥<br />";
+		}
+	?>
+	</div>
+
 </body>
 </html>
