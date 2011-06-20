@@ -19,6 +19,7 @@ include_once "function/xdownpage.php";
 	$sql2 = "select count(id) from admin where type=2";// 2 for proxy
 	$sql3 = "select count(id) from admin where type=3"; //3 for normal root
 	$sql4 = "select name,time,money from money order by time desc LIMIT 10";
+	$sql5 = "select money from money";
         $handle = openConn();
         if($handle == NULL) die( "mysql_error".mysql_error());
         $result = mysql_query($sql1,$handle)   or die('Error in query $query.' .mysql_error());
@@ -40,6 +41,17 @@ include_once "function/xdownpage.php";
 		{
 			$row = mysql_fetch_array($result,MYSQL_NUM);
 			$log_arr[$i] = $row;
+		}
+	}
+	$result = mysql_query($sql5,$handle)   or die('Error in query $query.' .mysql_error());
+	$num2 = mysql_num_rows($result);
+	if($num2 > 0)
+	{
+		$ALLMONEY=0;
+		for($i = 0; $i < $num2; $i++)
+		{
+			$row = mysql_fetch_array($result,MYSQL_NUM);
+			$ALLMONEY += intval($row[0]);
 		}
 	}
 	closeConn($handle );
@@ -83,8 +95,13 @@ body {
 		<div> 总共有<?php echo $ROOTS; ?>位超级管理员</div>
 		<div> <span style="color:white;">总共有</span><?php echo $NROOTS; ?>位普通管理员</div>
 		<div>  <span style="color:white;">总共有</span><?php echo $PROXYS; ?>位代理商</div>
+		<div > <span style="color:white;"> 总共有</span><?php echo $ALLMONEY;?>￥ 人民币</div>
 	</div>
 	<hr size=1 style="width:700px;margin-left:50px;" />
+<?php 
+	if( intval($_SESSION["zz"]) == 1 )
+	{
+?>
 	<div style="margin-left:50px;line-height:1.6em;">
 	<span style="color:gray;">The Last 10 records:</span> <br />
 	<?php
@@ -94,6 +111,9 @@ body {
 		}
 	?>
 	</div>
+<?php
+	}
+?>
 
 </body>
 </html>

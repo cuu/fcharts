@@ -46,7 +46,7 @@ include_once "function/xdownpage.php";
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
 <html> 
 	<head> 
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+	
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
@@ -72,7 +72,31 @@ include_once "function/xdownpage.php";
 		<!-- 1b) Optional: the exporting module --> 
 		<script type="text/javascript" src="js/Highcharts-2.1.4/js/modules/exporting.js"></script> 
 		
-		<script type="text/javascript"> 
+		<script type="text/javascript">
+		function delete_this(id,obj)
+		{
+			if(confirm("确定要删除这条记录么?"))
+			{
+            			$.ajax({
+                                        
+                                        url: 'show_his.php?action=ajaxdelete&id='+id,
+                                        success: function(data) 
+                                        {
+                                                //alert(data);
+                                                //$('.result').html(data);
+						$(obj).parent().fadeOut("slow");
+					             
+                                        },
+                                        error: function(xhr, ajaxOptions, thrownError)
+                                        {
+                                                   // alert(xhr.statusText);
+                                                   // alert(thrownError);
+                                                $("#his_container").html(xhr.statusText);
+                                                return false;
+                                        }
+                                });	
+			}
+		} 
 		function show_his(id,NAME)
 		{
             			$.ajax({
@@ -148,7 +172,13 @@ include_once "function/xdownpage.php";
 						y: 100,
 						borderWidth: 0
 					},
-					series: [{
+					series: [
+					{
+						type: 'column',
+						name: '<?php echo $NAME;?>',
+						data: [ <?php echo $data; ?>]	
+					},
+					{
 						name: '<?php echo $NAME;?>',
 						data: [ <?php echo $data; ?>]
 					}]

@@ -31,7 +31,7 @@ function  GetCode()
 
 }
 ?>
-<div style="font-size:50px;margin-left:80px;"><span style="color:red;font-size:55px;">☭</span> 金石后台登陆 </div>
+<div style="font-size:50px;margin-left:80px;"><span style="color:red;font-size:55px;"></span> 金石后台登陆 </div>
 <hr size="1" />
 <form name="admininfo" action="chklogin.php"  method=post onSubmit="return check()" style="margin-top:33px;margin-left:80px;" >
 	<table cellspacing="4" cellpadding="3">

@@ -101,8 +101,14 @@ text-decoration:none;
 ?>
 		<a class="tab" id="menu_item1" href="proxyManager.php" target=mainFrame>代理商管理</a> 
 <?php
+	}else if( intval( $_SESSION["zz"] ) == 2)
+	{
+?>
+		<a class="tab" id="menu_item1" href="show_his.php?action=nshow&name=<?php echo $_SESSION['yhgl']; ?>" target=mainFrame>历史记录</a> 
+<?php
 	}
 ?>
+
 <a class="tab" id="menu_item2" href="add_money.php" target=mainFrame>记录今天赚了多少钱</A> 
 <!--
  <a class="tab" id="menu_item3" href="noteSet.php" target=mainFrame></A>
