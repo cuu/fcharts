@@ -95,7 +95,14 @@ body {
 		<div> 总共有<?php echo $ROOTS; ?>位超级管理员</div>
 		<div> <span style="color:white;">总共有</span><?php echo $NROOTS; ?>位普通管理员</div>
 		<div>  <span style="color:white;">总共有</span><?php echo $PROXYS; ?>位代理商</div>
+<?php
+	if(intval($_SESSION["zz"]) == 1)
+	{
+?>
 		<div > <span style="color:white;"> 总共有</span><?php echo $ALLMONEY;?>￥ 人民币</div>
+<?php
+	}
+?>
 	</div>
 	<hr size=1 style="width:700px;margin-left:50px;" />
 <?php 
