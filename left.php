@@ -109,7 +109,14 @@ text-decoration:none;
 	}
 ?>
 
+<?php
+	if( intval($_SESSION["zz"]) == 1  || intval($_SESSION["zz"])==2)
+	{
+?>
 <a class="tab" id="menu_item2" href="add_money.php" target=mainFrame>记录今天赚了多少钱</A> 
+<?php
+	}
+?>
 <!--
  <a class="tab" id="menu_item3" href="noteSet.php" target=mainFrame></A>
 -->

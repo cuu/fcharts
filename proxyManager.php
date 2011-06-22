@@ -29,7 +29,36 @@ include_once "function/xdownpage.php";
 <?php
 	include "jq_ui.php";
 ?>
-
+<script type="text/javascript">
+function change_zt(id,obj)
+{
+            	$.ajax({
+                                        
+                            url: 'check.php?action=ztchange&id='+id,
+                            success: function(data) 
+                                        {
+                                                //alert(data);
+                                                //$('.result').html(data);
+                                                if(data == 2 )
+                                                { 
+							$(obj).html("改变状态失败");
+                                                        return false;
+                                                }else if(data == 0 )
+                                                {
+                                                       if( $(obj).html()=="使用中") $(obj).html("禁用中");
+						       else if( $(obj).html()=="禁用中") $(obj).html("使用中");                                                               
+                                                }
+                                                
+                                        },
+                                        error: function(xhr, ajaxOptions, thrownError)
+                                        {
+                                                   // alert(xhr.statusText);
+                                                   // alert(thrownError);
+                                                     return false;
+                                        }
+                   	});	
+}
+</script>
 <style type="text/css">
 body{   background:url("images/dang.jpg") no-repeat bottom right;}
 .checked_line
@@ -39,6 +68,14 @@ body{   background:url("images/dang.jpg") no-repeat bottom right;}
 .unchecked_line
 {
         background:#fff;
+}
+a.edit:link
+{
+	color:blue;
+}
+a.edit:hover
+{
+	color:red;
 }
 </style>
 
@@ -120,11 +157,14 @@ else
 			{
 ?>
                         <a class="del"  onClick="return confirm('您确定进行删除操作吗？')"   href="proxyManager.php?action=del&id=<?php  echo   trim($row["id"]); ?>&name=<?php echo trim( $row["username"]); ?>">删除</a> &nbsp;
+			<a class="edit"  href="#" onclick="change_zt(<?php echo $row["id"];?>,this)" ><?php if( intval($row["zt"]) == 1) {echo "使用中";} if( intval($row["zt"]) == 0) {echo "禁用中";}?></a>
 <?php
 			}
-			else
+			else if( intval($_SESSION["zz"]) ==3)
 			{
-				echo "不可操作";
+?>
+			<a class="edit"  href="#" onclick="change_zt(<?php echo $row["id"];?>,this)" ><?php if( intval($row["zt"]) == 1) {echo "使用中";} if( intval($row["zt"]) == 0) {echo "禁用中";}?></a>
+<?php
 			}
 ?>
 			<!--

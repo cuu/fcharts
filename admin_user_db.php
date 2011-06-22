@@ -165,7 +165,7 @@ if(strcmp($add_new_user,"add") == 0)
 	      {
 		//echo "result1 !== false";
 		closeConn($handle);
-		echo "<script language=javascript>alert('管理员帐号添加成功;请记住您的新帐号信息!');</script>";
+		echo show_inf( '管理员帐号添加成功;请记住您的新帐号信息!');
 		die();
 	      }
 	    else
