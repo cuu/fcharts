@@ -99,6 +99,16 @@ include_once "function/xdownpage.php";
 		} 
 		function show_his(id,NAME)
 		{
+				if( parseInt(id) == 1)
+				{
+					$(".show_his:first").css("color","red");
+			//		$(".show_his:first").css("backgroundColor","red");
+				}
+				else
+				{
+					$(".show_his:first").css("color","black");
+			//		$(".show_his:first").css("backgroundColor","white");
+				}
             			$.ajax({
                                         
                                         url: 'show_his.php?action=ajaxshow&id='+id+"&name="+NAME,
@@ -196,6 +206,11 @@ include_once "function/xdownpage.php";
 		.show_his
 		{
 			font-size:14px;
+			display:block;
+			float:left;
+			padding:4px;
+			border:1px solid #aaa;
+			margin-left:3px;		
 		}
 		a.show_his:link
 		{
@@ -206,6 +221,7 @@ include_once "function/xdownpage.php";
 		{
 			color:red;
 			font-size:12px;
+			background:red;
 		}
 		#hisa:link
 		{
@@ -225,7 +241,7 @@ include_once "function/xdownpage.php";
 ?>		
 		</div>
 		<hr size = "1" style="width:100px; text-align:left;margin-left:69px;" />
-		<div style="margin-top:8px;line-height:1.6em;margin-left:50px;">
+		<div style="clear:both;margin-top:8px;line-height:1.6em;margin-left:50px;">
 <?php
 	// ·ÖÒ³
 	$sql = "select count(id) from money where name='".$NAME."'";
@@ -256,7 +272,7 @@ include_once "function/xdownpage.php";
 				break;
 			}
 			$left = $left-$pages;
-			echo "<a   href='#' id='hisa' class='show_his'  onclick='javascript:show_his({$i},\"{$NAME}\")'>".$i."</a>&nbsp;";
+			echo "<a   href='#' id='hisa'  class='show_his'  onclick='javascript:show_his({$i},\"{$NAME}\")'>".$i."</a>&nbsp;";
 		}
 	}
 	closeConn($handle);
@@ -268,5 +284,6 @@ include_once "function/xdownpage.php";
 	</body> 
 	<script>
 		show_his(1,"<?php echo $NAME; ?>");
+		$(".show_his:first").css("color", "red");
 	</script>
 </html> 
