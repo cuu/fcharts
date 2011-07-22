@@ -2,10 +2,12 @@
 session_start();
 include_once "header.php";
 //include_once "waibu.php";
-//include_once "cscheck.php";
+include_once "cscheck.php";
 include_once "function/conn.php";
 include_once "function/function.php";
 include_once "function/xdownpage.php";
+include "config.php";
+
 ?>
 <?php
 	$id     = getFormValue("id"     );
@@ -144,6 +146,7 @@ include_once "function/xdownpage.php";
 						marginBottom: 33
 					},
 					credits: {
+						enabled:false,
       		 				text: 'Guu 2011 CopyRight',
         					href: 'http://guu.github.com'
     					},
@@ -251,7 +254,8 @@ include_once "function/xdownpage.php";
 	$row = mysql_fetch_array($result,MYSQL_NUM);
 	$all_num = intval($row[0]);
 
-	$pages = 5;
+//	$pages = 20;
+	$pages;
 	if ($all_num == 0)
 	{	
 		echo "No Records";

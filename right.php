@@ -9,7 +9,7 @@
 session_start();
 include_once "header.php";
 //include_once "waibu.php";
-//include_once "cscheck.php";
+include_once "cscheck.php";
 include_once "function/conn.php";
 include_once "function/function.php";
 include_once "function/xdownpage.php";
@@ -121,6 +121,15 @@ body {
 <?php
 	}
 ?>
+
+<br />
+<pre>
+	<font size=40>""</font>
+	本系统的图表生成部分可能不支持IE6，推荐使用IE6以上的IE浏览器 或者是浏览性能更好的:
+	<a style="color:red;"  href="http://www.google.com/chrome/"><u>谷歌浏览器</u></a>
+	<a style="color:green;"  href="http://www.mozilla.com/en-US/firefox/new/"><u>FireFox浏览器</u></a>
+	<a style="color:blue;" href="http://www.opera.com/"><u>Opera浏览器</u></a>
+</pre>
 
 </body>
 </html>

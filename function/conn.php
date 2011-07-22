@@ -1,4 +1,5 @@
 <?php
+include_once "config.php";
 include_once "function.php";
 
 $Fy_Post = ""; $Fy_Get = "";$Fy_cook=""; $Fy_In="";
@@ -62,14 +63,16 @@ function StopInjection($var)
 function openConn()
 {
         // 如果my.cnf中启用了skip-networking,即表示拒绝tcp/ip的mysql连接,就要用sqlsockect来处理,这样更安全
-	$Server = "127.0.0.1";
-        $socket = "localhost:/Applications/xampp/xamppfiles/var/mysql/mysql.sock";
+	//$Server = "127.0.0.1";
+        //$socket = "localhost:/Applications/xampp/xamppfiles/var/mysql/mysql.sock";
 	//$sqlsocket = "localhost:/var/lib/mysql/mysql.sock";
 
-	$SqlUser="root";
-	$SqlPasswd="";
-	$SqlDatabase = "golden";
-	$link = mysql_connect($socket, $SqlUser, $SqlPasswd);
+	//$SqlUser="root";
+	//$SqlPasswd="";
+	//$SqlDatabase = "golden";
+	global $Server,$socket,$sqlsockect,$SqlUser,$SqlPasswd,$SqlDatabase;
+
+	$link = mysql_connect($Server, $SqlUser, $SqlPasswd);
 	if (!$link) {
 		echo "<script>window.status=\"SQL Server 数据库连接失败 ".mysql_error()."\";</script>";
 		return NULL;

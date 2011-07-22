@@ -7,7 +7,8 @@ include_once "function/function.php";
 ?>
 
 <?php
-$pages = 5;
+include_once  "config.php";
+
 $action = getFormValue("action");
 if($action == "ajaxshow")
 {
@@ -59,9 +60,51 @@ function n_show_his($name)
 <?php
 	include "jq_ui.php";
 ?>
+		<style type="text/css">
+		a
+		{
+			color:blue;
+		}
+		.show_his
+		{
+			font-size:14px;
+			display:block;
+			float:left;
+			padding:4px;
+			border:1px solid #aaa;
+			margin-left:3px;		
+		}
+		a.show_his:link
+		{
+			color:blue; 
+			font-size:14px;
+		}
+		a.show_his:active
+		{
+			color:red;
+			font-size:12px;
+			background:red;
+		}
+		#hisa:link
+		{
+			color:blue;
+		}
+		</style>
+
 		<script type="text/javascript"> 
 		function show_his(id,NAME)
 		{
+				if( parseInt(id) == 1)
+				{
+					$(".show_his:first").css("color","red");
+			//		$(".show_his:first").css("backgroundColor","red");
+				}
+				else
+				{
+					$(".show_his:first").css("color","black");
+			//		$(".show_his:first").css("backgroundColor","white");
+				}
+
             			$.ajax({
                                         
                                         url: 'show_his.php?action=ajaxshow&id='+id+"&name="+NAME,
@@ -88,6 +131,7 @@ function n_show_his($name)
 		<div id="his_container" style="line-height:1.6em;margin-left:20px;margin-bottom:8px;margin-top:40px;" >
 		</div>
 		<div  style="line-height:1.6em;margin-left:20px;margin-bottom:8px;">
+
 <?php
 	// ·ÖÒ³
 	$sql = "select count(id) from money where name='".$name."'";
@@ -97,7 +141,7 @@ function n_show_his($name)
 	$row = mysql_fetch_array($result,MYSQL_NUM);
 	$all_num = intval($row[0]);
 
-	$pages = 5;
+	global $pages ;
 	if ($all_num == 0)
 	{	
 		echo "No Records";
@@ -105,16 +149,19 @@ function n_show_his($name)
 	else if( $all_num <=$pages && $all_num > 0)
 	{
 		// one page
+	//	echo "one page";
+		$i=1;
+		echo "<a  href='#' id='hisa'  class='show_his'  onclick='javascript:show_his({$i},\"{$name}\")'>".$i."</a>&nbsp;";
 	}else if($all_num > $pages)
 	{
+	//	echo "all_num > pages";
 		$left = $all_num;
 		for( $i=1; $i < ($all_num/$pages)+1; $i++)
 		{
 			
 			if($left < $pages) 
 			{
-				echo "<a  href='#' id='hisa'  class='show_his'  onclick='javascript:show_his({$i},\"{$name}\")'>".$i."</a>&nbsp;";
-				
+				echo "<a  href='#' id='hisa'  class='show_his'  onclick='javascript:show_his({$i},\"{$name}\")'>".$i."</a>&nbsp;";		
 				break;
 			}
 			$left = $left-$pages;
@@ -140,12 +187,14 @@ function ajax_show_his($id,$name)
 	if( intval($id) < 1) { echo "error"; return; }
 	$start = ( intval($id) - 1) *$pages;
 	$end =  intval($id) *$pages; 
+
 	$sql = "select name,time,money,id from money where name='".$name."' order by time desc LIMIT ".$start.",".$end;
 
         $handle = openConn();
         if($handle == NULL) die( "mysql_error".mysql_error());
         $result = mysql_query($sql,$handle)   or die('Error in query $query.' .mysql_error());
 	$num = mysql_num_rows($result);
+
 	if($num > 0)
 	{
 		for($i = 0; $i < $num; $i++)
